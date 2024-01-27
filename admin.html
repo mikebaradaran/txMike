@@ -17,6 +17,7 @@
     <div id="messages"></div>
 
     <script>
+        const txURL = "https://txmike.glitch.me";
         const divMessages = document.getElementById("messages");
         function deleteName(name) {
             sendCommand("deletename " + name);
@@ -41,7 +42,7 @@
             `<button onclick="sendCommand('delete')">Close class</button>`;
         }
         //-------------------------------------------------------------
-        const socket = io("https://ticksncrosses.glitch.me");
+        const socket = io(txURL);
         socket.on("connection");
         // force refresh
         let msg = {
