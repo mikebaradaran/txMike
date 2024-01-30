@@ -6,8 +6,8 @@ const server = require("http").createServer(app);
 const io = require("socket.io")(server, { cors: { origin: "*" } });
 
 function showPage(req,res, data){
-  var appname = req.get('host').replace(".glitch.me","");
-  res.send(data.replace("appname",appname));
+  var appname = req.get('host');
+  res.send(data.replaceAll("https://appname.glitch.me", appname));
 }
 
 app.get("/home", (req, res) => {
