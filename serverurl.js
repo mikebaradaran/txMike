@@ -1,1 +1,0 @@
-var serverurl="https://txmike.glitch.me/mikeb";

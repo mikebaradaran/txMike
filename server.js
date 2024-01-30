@@ -5,19 +5,19 @@ const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, { cors: { origin: "*" } });
 
-var appname = "txmike";
-
-function showPage(res, data){
+function showPage(req,res, data){
+  var appname = req.get('host').replace(".glitch.me","");
   res.send(data.replace("appname",appname));
 }
 
 app.get("/home", (req, res) => {
+  
   fs.readFile("home.html", "utf8", (err, data) => {
     if (err) {
       console.log(err);
       return;
     }
-    showPage(res, data)
+    showPage(req, res, data)
   });
 });
 app.get("/trainer", (req, res) => {
@@ -26,7 +26,7 @@ app.get("/trainer", (req, res) => {
       console.log(err);
       return;
     }
-    showPage(res, data)
+    showPage(req,res, data)
   });
 });
 app.get("/admin", (req, res) => {
@@ -35,7 +35,7 @@ app.get("/admin", (req, res) => {
       console.log(err);
       return;
     }
-    showPage(res, data)
+    showPage(req,res, data)
   });
 });
 
