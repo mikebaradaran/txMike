@@ -1,1 +1,1 @@
-var appUrl = '<%= globalData.appName %>';
+var appUrl = 'https://txmike.glitch.com/';

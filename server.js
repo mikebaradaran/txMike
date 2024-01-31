@@ -11,7 +11,7 @@ const io = require("socket.io")(server, { cors: { origin: "*" } });
 //   appUrl: 'https://txmike.glitch.me/',
 //   author: 'Mike Baradaran'
 // };
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, '/views'));
 // app.use((req, res, next) => {
 //   res.locals.globalData = globalData;
@@ -24,20 +24,20 @@ app.set('view engine', 'ejs');
 //   res.send(data.replaceAll("https://appname.glitch.me", appname));
 // }
 function showPage(res, pageName){
-  // res.sendFile(__dirname + "/" + pageName);
-  res.render(pageName);
+  res.sendFile(__dirname + "/" + pageName);
+  //res.render(pageName);
 }
 app.get("/home", (req, res) => {
-  showPage(res, "home");
+  showPage(res, "home.html");
 });
 app.get("/trainer", (req, res) => {
-  showPage(res, "trainer");
+  showPage(res, "trainer.html");
 });
 app.get("/admin", (req, res) => {
-   showPage(res, "admin");
+   showPage(res, "admin.html");
 });
 app.get("/index", (req, res) => {
-   showPage(res, "index");
+   showPage(res, "index.html");
 });
 
 server.listen(
