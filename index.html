@@ -1,8 +1,12 @@
 <html>
 <body>
-    <h1>Welcome to <%= globalData.appName %></h1>
-    <p>Created by <%= globalData.author %></p>
     <object data="https://txmike.glitch.me/home"></object>
     <object data="https://txmike.glitch.me/trainer"></object>
+  
+    <script>
+      const serverURL = "https://ticksncrosses.glitch.me/";
+      document.getElementById("home").data = serverURL + "home";
+      document.getElementById("trainer").data = serverURL + "trainer";
+    </script>
 </body>
 </html>
