@@ -1,11 +1,12 @@
 <html>
 <body>
-  <script>
-    alert(globalData.appName);
-  </script>
-    <h1>Welcome to <%= globalData.appName %></h1>
-    <p>Created by <%= globalData.author %></p>
-    <object data="https://txmike.glitch.me/home"></object>
-    <object data="https://txmike.glitch.me/trainer"></object>
+    <object id="home"></object>
+    <object id="trainer"></object>
+      
+      <script>
+        var appName = "https://" + "<%= globalData.appName %>" + ".glitch.me/";
+        document.getElementById("home").data = appName+"home"
+        document.getElementById("trainer").data = appName+"trainer"
+      </script>
 </body>
 </html>
