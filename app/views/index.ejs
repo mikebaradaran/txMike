@@ -1,0 +1,13 @@
+<html>
+<body>
+    <object id="home"></object>
+    <object id="trainer"></object>
+      
+      <script>
+        var appUrl = "<%= globalData.appUrl %>" ;
+        alert(appUrl);
+        document.getElementById("home").data = appUrl+"home"
+        document.getElementById("trainer").data = appUrl+"trainer"
+      </script>
+</body>
+</html>

@@ -7,7 +7,7 @@ const io = require("socket.io")(server, { cors: { origin: "*" } });
 
 // Global data to be shared across views
 const globalData = {
-  appName: 'txmike',
+  appUrl: 'https://txmike.glitch.me/',
   author: 'Mike Baradaran'
 };
 app.set('view engine', 'ejs');
