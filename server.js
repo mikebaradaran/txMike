@@ -1,5 +1,6 @@
 // server.js
 const fs = require("fs");
+var path = require('path') 
 const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
@@ -11,7 +12,7 @@ const io = require("socket.io")(server, { cors: { origin: "*" } });
 //   author: 'Mike Baradaran'
 // };
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../views'));
+// app.set('views', path.join(__dirname, '/views'));
 // app.use((req, res, next) => {
 //   res.locals.globalData = globalData;
 //   next();
