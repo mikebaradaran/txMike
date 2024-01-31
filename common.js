@@ -1,5 +1,5 @@
 // common.js
-const projectName = "txMike"
+const projectName = "https://txMike.glitch.me/"
 
 const commonData = {
   appName: projectName,

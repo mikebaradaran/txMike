@@ -17,8 +17,17 @@ app.use((req, res, next) => {
 });
 
 // Define routes
-app.get('/', (req, res) => {
+app.get('/index', (req, res) => {
   res.render('index');
+});
+app.get('/home', (req, res) => {
+  res.render('home');
+});
+app.get('/trainer', (req, res) => {
+  res.render('trainer');
+});
+app.get('/admin', (req, res) => {
+  res.render('admin');
 });
 
 // Start the server
