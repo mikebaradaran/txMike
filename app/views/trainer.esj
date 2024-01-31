@@ -5,7 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-
+<script src="/public/js/main.js"></script>
     <style>
       table{
         width:100%;
@@ -25,7 +25,7 @@
     <div id="messages"></div>
 
     <script>
-        const txURL = "https://txmike.glitch.me";
+        
         const divMessages = document.getElementById("messages");
 
         function displayData(data) {
@@ -38,7 +38,7 @@
             divMessages.innerHTML = messages + "</table>";
         }
         //-------------------------------------------------------------
-        const socket = io(txURL);
+        const socket = io(appUrl);
         socket.on("connection");
         let msg = {
                 name: "trainer",

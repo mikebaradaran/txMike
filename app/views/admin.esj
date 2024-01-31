@@ -10,14 +10,14 @@
         }
     </style>
     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-
+    <script src="/public/js/main.js"></script>
 </head>
 
 <body>
     <div id="messages"></div>
 
     <script>
-        const txURL = "https://txmike.glitch.me";
+        
         const divMessages = document.getElementById("messages");
         function deleteName(name) {
             sendCommand("deletename " + name);
@@ -42,7 +42,7 @@
             `<button onclick="sendCommand('delete')">Close class</button>`;
         }
         //-------------------------------------------------------------
-        const socket = io(txURL);
+        const socket = io(appUrl);
         socket.on("connection");
         // force refresh
         let msg = {

@@ -5,16 +5,17 @@ const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, { cors: { origin: "*" } });
 
-// Global data to be shared across views
-const globalData = {
-  appUrl: 'https://txmike.glitch.me/',
-  author: 'Mike Baradaran'
-};
+// // Global data to be shared across views
+// const globalData = {
+//   appUrl: 'https://txmike.glitch.me/',
+//   author: 'Mike Baradaran'
+// };
 app.set('view engine', 'ejs');
-app.use((req, res, next) => {
-  res.locals.globalData = globalData;
-  next();
-});
+app.set('views', path.join(__dirname, '../views'));
+// app.use((req, res, next) => {
+//   res.locals.globalData = globalData;
+//   next();
+// });
 
 // function showPage(req,res, data){
 //   var appname = req.get('host');
@@ -23,19 +24,19 @@ app.use((req, res, next) => {
 // }
 function showPage(res, pageName){
   // res.sendFile(__dirname + "/" + pageName);
-  res.render(pageName.replace(".html",""));
+  res.render(pageName);
 }
 app.get("/home", (req, res) => {
-  showPage(res, "home.html");
+  showPage(res, "home");
 });
 app.get("/trainer", (req, res) => {
-  showPage(res, "trainer.html");
+  showPage(res, "trainer");
 });
 app.get("/admin", (req, res) => {
-   showPage(res, "admin.html");
+   showPage(res, "admin");
 });
 app.get("/index", (req, res) => {
-   showPage(res, "index.html");
+   showPage(res, "index");
 });
 
 server.listen(
