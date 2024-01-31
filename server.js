@@ -10,18 +10,20 @@ const io = require("socket.io")(server, { cors: { origin: "*" } });
 //   console.log(appname);
 //   res.send(data.replaceAll("https://appname.glitch.me", appname));
 // }
-
+function showPage(res, pageName){
+  res.sendFile(__dirname + "/" + pageName);
+}
 app.get("/home", (req, res) => {
-  res.sendFile(__dirname + "/home.html");
+  showPage(res, "home.html");
 });
 app.get("/trainer", (req, res) => {
-  res.sendFile(__dirname + "/trainer.html");
+  showPage(res, "trainer.html");
 });
 app.get("/admin", (req, res) => {
-   res.sendFile(__dirname + "/admin.html");
+   showPage(res, "admin.html");
 });
 app.get("/index", (req, res) => {
-   res.sendFile(__dirname + "/index.html");
+   showPage(res, "index.html");
 });
 
 server.listen(
