@@ -5,13 +5,25 @@ const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, { cors: { origin: "*" } });
 
+// Global data to be shared across views
+const globalData = {
+  appName: 'txmike',
+  author: 'Mike Baradaran'
+};
+app.set('view engine', 'ejs');
+app.use((req, res, next) => {
+  res.locals.globalData = globalData;
+  next();
+});
+
 // function showPage(req,res, data){
 //   var appname = req.get('host');
 //   console.log(appname);
 //   res.send(data.replaceAll("https://appname.glitch.me", appname));
 // }
 function showPage(res, pageName){
-  res.sendFile(__dirname + "/" + pageName);
+  // res.sendFile(__dirname + "/" + pageName);
+  res.render(pageName.replace(".html",""));
 }
 app.get("/home", (req, res) => {
   showPage(res, "home.html");
