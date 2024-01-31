@@ -9,12 +9,9 @@
 </head>
 <body>
   <h1>Welcome to <%= commonData.appName %></h1>
-  <p>Created by <%= commonData.author %></p>
+<script>
+  alert('<%= commonData.appName %>' + "," +'<%= commonData.author %>');
+</script>
 
-  <!-- Include the common.js file -->
-  <script src="/common.js"></script>
-
-  <!-- Include other scripts -->
-  <script src="/public/js/main.js"></script>
 </body>
 </html>

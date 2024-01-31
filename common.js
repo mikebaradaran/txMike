@@ -1,7 +1,7 @@
 // common.js
 const commonData = {
-  appName: "My App",
-  author: "John Doe"
+  appName: "txMike",
+  author: "Mike Baradaran"
 };
-
+commonData.appName = "txMikeBaradaran";
 module.exports = commonData;

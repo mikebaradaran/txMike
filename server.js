@@ -7,6 +7,9 @@ const commonData = require('./common.js');
 
 app.set('view engine', 'ejs');
 
+// Middleware to serve static files from the public directory
+app.use(express.static('public'));
+
 // Middleware to make common data accessible in all views
 app.use((req, res, next) => {
   res.locals.commonData = commonData;
