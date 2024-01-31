@@ -28,12 +28,12 @@
 
     <div id="messages"></div>
     <script>
-        const serverURL = "https://ticksncrosses.glitch.me";
+        const serverURL = '<%= commonData.appName %>';
       
         const txtName = document.getElementById("name");
         const txtMessage = document.getElementById("message");
-
-        const socket = io(serverURL);
+console.log(serverURL);
+        const socket = io('https://txMike.glitch.me');
         socket.on("connection");
 
         function sendMessage() {
