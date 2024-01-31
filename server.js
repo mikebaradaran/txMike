@@ -40,37 +40,38 @@ server.listen(
 
 var messages = [];
 function saveMessage(data) {
-  for (let i = 0; i < messages.length; i++) {
-    if (messages[i].name == data.name) {
-      messages[i].body = data.body;
-      return;
+  const msg = messages.find((m) => m.name == data.name);
+  if(msg)
+    msg.body = data.body;
+  else
+    messages.push({ name: data.name, body: data.body });
+}
+function doTrainerCommand(data) {
+  if (data.body == "delete") {
+    messages = [];
+    return;
+  }
+  if (data.body == "clear") {
+    for (let i = 0; i < messages.length; i++) {
+      messages[i].body = "";
+    }
+    return;
+  }
+  if (data.body.startsWith("deletename")) {
+    const studentName = data.body.replace("deletename ","").toLowerCase();
+    for (let i = 0; i < messages.length; i++) {
+      if (messages[i].name.toLowerCase() == studentName) {
+        messages.splice(i, 1);
+        break;
+      }
     }
   }
-
-  messages.push({ name: data.name, body: data.body });
 }
 
 io.on("connection", (socket) => {
   socket.on("message", (data) => {
-    if (data.name == "trainer") {
-      if (data.body == "delete") {
-        messages = [];
-      } else if (data.body == "clear") {
-        for (let i = 0; i < messages.length; i++) {
-          messages[i].body = "";
-        }
-      }
-      else if(data.body.startsWith("deletename")){
-        const studentName = data.body.split(" ")[1];
-        console.log(studentName);
-        for (let i = 0; i < messages.length; i++) {
-          if(messages[i].name == studentName){
-            messages.splice(i,1);
-            break;
-          }
-        }
-        
-      }
+    if (data.name.toLowerCase() == "trainer") {
+      doTrainerCommand(data);
     } else {
       saveMessage(data);
     }
