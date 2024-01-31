@@ -5,39 +5,23 @@ const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, { cors: { origin: "*" } });
 
-function showPage(req,res, data){
-  var appname = req.get('host');
-  console.log(appname);
-  res.send(data.replaceAll("https://appname.glitch.me", appname));
-}
+// function showPage(req,res, data){
+//   var appname = req.get('host');
+//   console.log(appname);
+//   res.send(data.replaceAll("https://appname.glitch.me", appname));
+// }
 
 app.get("/home", (req, res) => {
-  
-  fs.readFile("home.html", "utf8", (err, data) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    showPage(req, res, data)
-  });
+  res.sendFile(__dirname + "/home.html");
 });
 app.get("/trainer", (req, res) => {
-  fs.readFile("trainer.html", "utf8", (err, data) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    showPage(req,res, data)
-  });
+  res.sendFile(__dirname + "/trainer.html");
 });
 app.get("/admin", (req, res) => {
-  fs.readFile("admin.html", "utf8", (err, data) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    showPage(req,res, data)
-  });
+   res.sendFile(__dirname + "/admin.html");
+});
+app.get("/index", (req, res) => {
+   res.sendFile(__dirname + "/index.html");
 });
 
 server.listen(
