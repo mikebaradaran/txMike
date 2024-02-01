@@ -30,11 +30,11 @@ app.get("/trainer", (req, res) => {
 app.get("/admin", (req, res) => {
   res.render("admin");
 });
-app.get("/clear", (req, res) => {
-  messages.forEach(m=> m.body="");
-  io.sockets.emit("message", messages);
-  res.end();
-});
+// app.get("/clear", (req, res) => {
+//   messages.forEach(m=> m.body="");
+//   io.sockets.emit("message", messages);
+//   res.end();
+// });
 
 server.listen(
   { port: process.env.PORT, host: "0.0.0.0" },
