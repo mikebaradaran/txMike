@@ -58,12 +58,10 @@ function doTrainerCommand(data) {
   }
   if (data.body.startsWith("deletename")) {
     const studentName = data.body.substring(11).toLowerCase();
-    for (let i = 0; i < messages.length; i++) {
-      if (messages[i].name.toLowerCase() == studentName) {
-        messages.splice(i, 1);
-        break;
-      }
-    }
+    console.log(studentName);
+    let index = messages.findIndex((n) => n.toLowerCase() == studentName);
+    if(index != -1)
+        messages.splice(index, 1);
   }
 }
 
