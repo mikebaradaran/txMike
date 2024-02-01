@@ -4,12 +4,12 @@ const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, { cors: { origin: "*" } });
 
-const commonData = require('./common.js');
+const commonData = require("./common.js");
 
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 
 // Middleware to serve static files from the public directory
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 // Middleware to make common data accessible in all views
 app.use((req, res, next) => {
@@ -18,17 +18,17 @@ app.use((req, res, next) => {
 });
 
 // Define routes
-app.get('/index', (req, res) => {
-  res.render('index');
+app.get("/index", (req, res) => {
+  res.render("index");
 });
-app.get('/home', (req, res) => {
-  res.render('home');
+app.get("/home", (req, res) => {
+  res.render("home");
 });
-app.get('/trainer', (req, res) => {
-  res.render('trainer');
+app.get("/trainer", (req, res) => {
+  res.render("trainer");
 });
-app.get('/admin', (req, res) => {
-  res.render('admin');
+app.get("/admin", (req, res) => {
+  res.render("admin");
 });
 
 server.listen(
@@ -57,7 +57,7 @@ function doTrainerCommand(data) {
     return;
   }
   if (data.body.startsWith("deletename")) {
-    const studentName = data.body.replace("deletename ","").toLowerCase();
+    const studentName = data.body.substring(11).toLowerCase();
     for (let i = 0; i < messages.length; i++) {
       if (messages[i].name.toLowerCase() == studentName) {
         messages.splice(i, 1);
@@ -68,14 +68,11 @@ function doTrainerCommand(data) {
 }
 
 function saveMessage(data) {
-  for (let i = 0; i < messages.length; i++) {
-    if (messages[i].name.toLowerCase() == data.name.toLowerCase()) {
-      messages[i].body = data.body;
-      return;
-    }
-  }
-
-  messages.push({ name: data.name, body: data.body });
+  const found = messages.find((m) => m.name.toLowerCase() == data.name.toLowerCase());
+  if (found) 
+    found.body = data.body;
+  else 
+    messages.push({ name: data.name, body: data.body });
 }
 
 io.on("connection", (socket) => {
