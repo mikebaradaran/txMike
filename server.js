@@ -31,11 +31,9 @@ app.get("/admin", (req, res) => {
   res.render("admin");
 });
 app.get("/clear", (req, res) => {
-  let msg = {
-                name: "trainer",
-                body: "clear"
-            };
-  io.sockets.emit("message", msg);
+  messages.forEach(m=> m.body="");
+  io.sockets.emit("message", messages);
+  res.end();
 });
 
 server.listen(
