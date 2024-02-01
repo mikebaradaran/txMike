@@ -32,8 +32,7 @@
       
         const txtName = document.getElementById("name");
         const txtMessage = document.getElementById("message");
-console.log(serverURL);
-        const socket = io('https://txMike.glitch.me');
+        const socket = io(serverURL);
         socket.on("connection");
 
         function sendMessage() {
