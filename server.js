@@ -30,6 +30,13 @@ app.get("/trainer", (req, res) => {
 app.get("/admin", (req, res) => {
   res.render("admin");
 });
+app.get("/clear", (req, res) => {
+  let msg = {
+                name: "trainer",
+                body: "clear"
+            };
+  io.sockets.emit("message", msg);
+});
 
 server.listen(
   { port: process.env.PORT, host: "0.0.0.0" },
@@ -71,8 +78,10 @@ function saveMessage(data) {
   else 
     messages.push({ name: data.name, body: data.body });
 }
+// let appSocket = null;
 
 io.on("connection", (socket) => {
+  //appSocket = socket;
   socket.on("message", (data) => {
     if (data.name.toLowerCase() == "trainer") {
       doTrainerCommand(data);
