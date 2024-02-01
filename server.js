@@ -38,7 +38,7 @@ server.listen(
       console.error(err);
       process.exit(1);
     }
-    console.log(`Your app is listening on ${address}`);
+    console.log(`Your app is running!`);
   }
 );
 //------------------------------------------------------------
@@ -51,9 +51,7 @@ function doTrainerCommand(data) {
     return;
   }
   if (data.body == "clear") {
-    for (let i = 0; i < messages.length; i++) {
-      messages[i].body = "";
-    }
+    messages.forEach(m=> m.body="");
     return;
   }
   if (data.body.startsWith("deletename")) {
