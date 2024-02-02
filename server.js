@@ -18,6 +18,9 @@ app.use((req, res, next) => {
 });
 
 // Define routes
+app.get("/all", (req, res) => {
+  res.render("all");
+});
 app.get("/index", (req, res) => {
   res.render("index");
 });
@@ -30,11 +33,7 @@ app.get("/trainer", (req, res) => {
 app.get("/admin", (req, res) => {
   res.render("admin");
 });
-// app.get("/clear", (req, res) => {
-//   messages.forEach(m=> m.body="");
-//   io.sockets.emit("message", messages);
-//   res.end();
-// });
+
 
 server.listen(
   { port: process.env.PORT, host: "0.0.0.0" },
