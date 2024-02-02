@@ -24,8 +24,8 @@ app.get("/all", (req, res) => {
 app.get("/index", (req, res) => {
   res.render("index");
 });
-app.get("/home", (req, res) => {
-  res.render("home");
+app.get("/student", (req, res) => {
+  res.render("student");
 });
 app.get("/trainer", (req, res) => {
   res.render("trainer");
@@ -33,7 +33,6 @@ app.get("/trainer", (req, res) => {
 app.get("/admin", (req, res) => {
   res.render("admin");
 });
-
 
 server.listen(
   { port: process.env.PORT, host: "0.0.0.0" },
@@ -89,3 +88,31 @@ io.on("connection", (socket) => {
     io.sockets.emit("message", messages);
   });
 });
+
+function processComment(name, comment1, comment2) {
+  const duration = "10";
+  const courseTitle = "";
+
+  let firstname = name.split(" ")[0];
+  let com1 = "";
+  let com2 = "";
+  if (comment1.trim() != "")
+    com1 = `${firstname} made the following comments about the course: ${comment1.replace(
+      "\n",
+      "<br />"
+    )}<br />`;
+  if (comment2.trim() != "")
+    com2 = `When I asked what to do after the course, ${firstname} told me: ${comment2.replace(
+      "\n",
+      "<br />"
+    )}<br />`;
+
+  return `${name}<br /> 
+General comments:<br />
+${firstname} did well in this course and I am happy with ${firstname}'s progress.<br />
+${com1}<br />Punctuality & Engagement:<br />
+${firstname} was always punctual during the ${duration} days of the course and was engaged during the lectures.<br /><br />
+Recommendations for further learning:<br />
+Practice implementing Object oriented code and design at work.<br /> ${com2}<br />--------------------------------<br />`;
+}
+
