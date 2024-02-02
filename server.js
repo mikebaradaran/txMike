@@ -8,6 +8,9 @@ const commonData = require("./common.js");
 
 app.set("view engine", "ejs");
 
+// Serve static files from the "public" folder
+app.use(express.static('public'));
+
 // Middleware to serve static files from the public directory
 app.use(express.static("public"));
 
