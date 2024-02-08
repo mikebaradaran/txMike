@@ -54,20 +54,21 @@
                         <ol id="pcs"></ol>
                         <textarea id="txtArea" cols="65" rows="3"></textarea>
                         <div>
-                            <object data="https://txmike.glitch.me/student"></object>
+                            <object id="studentMessages" data="<%= commonData.appName %>/student"></object>
                         </div>
                     </div>
                     <div>
                         <input type="text" id="afa" />
                         <button onclick="afa()">AFA</button>
                         <select id="cboMessages" onchange="showTutorMessages()"></select>
+                        <a href="<%= commonData.appName %>/clear">Clear</a>
                     </div>
                 </td>
                 <td></td>
             </tr>
         </table>
     </div>
-    <object id="displayMessages" data="https://txmike.glitch.me/trainer" height="650"></object>
+    <object id="displayMessages" data="<%= commonData.appName %>/trainer" height="650"></object>
 
 
     <script src="indexScript.js"></script>

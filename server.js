@@ -33,7 +33,11 @@ app.get("/trainer", (req, res) => {
 app.get("/admin", (req, res) => {
   res.render("admin");
 });
-
+app.get("/clear", (req, res) => {  
+  doTrainerCommand({name:"trainer",body:"clear"});
+  // res.end();
+  res.render("index");
+});
 server.listen(
   { port: process.env.PORT, host: "0.0.0.0" },
   function (err, address) {

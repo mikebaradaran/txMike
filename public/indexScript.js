@@ -1,3 +1,4 @@
+var secret="Gladiator";
 // set up the messages
 const cboValues = [
     { cbo: "Select an option...", timer: 0, message: '' },
@@ -12,6 +13,11 @@ const cboValues = [
 ];
 var commentsSite = "";
 var evaluationSite = "";
+
+// function clearMessages(){
+//   fetch("<%= commonData.appName %>/clear");
+//   getElement("studentMessages").data = "<%= commonData.appName %>/student";
+// }
 
 async function setupForm1() {
     let res = await readFile('courseDetails.txt');
